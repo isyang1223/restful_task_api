@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tasks API</title>
+
+</head>
+<body>
+  <h1>Restful Tasks API</h1>
+
+  <!-- <button (click)="getTasksFromService()">Click to get all the tasks</button> -->
+  <!-- <ul>
+    <li *ngFor="let task of tasks">{{task["title"]}} - {{task["desc"]}}</li>
+  </ul> -->
+
+  <input #theValue type="text" />
+  <button (click)="getATaskFromService(theValue.value)">Click to get one task</button> 
+
+  <hr>
+  <div *ngFor="let error of errors">
+    <p>{{ error }}</p>
+  
+    <hr>
+  
+  
+  
+  </div>
+  <ul>
+    <li *ngIf ="task['title']">{{task["title"]}} - {{task["desc"]}}</li>
+  </ul>
+
+
+  <form (submit)="onSubmit()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+
+
+    Title: <input type="text" name="newTask.title" [(ngModel)]="newTask.title" /><br>
+     Description: <input type="text" name="newTask.desc" [(ngModel)]="newTask.desc" /><br>
+    <input type="submit" value="Create Task" />
+    
+  </form>
+
+  <ul>
+    <div *ngFor="let task of tasks">
+      <p>Title: {{task["title"]}}</p>
+      <p>Description: {{task["desc"]}}</p>
+      
+      <button (click)="deleteATaskFromService(task)">Delete</button>
+      <button (click)="editATaskFromService(task)">Edit</button>
+      <hr>
+    </div>
+  </ul>
+
+
+
+
+  <div *ngIf="showEdit">
+
+
+    <h3> Edit Task </h3>
+    <form (submit)="saveATaskFromService()">
+      
+      Title: <input type="text" name="task.title" [(ngModel)]="task.title" ><br>
+      Description: <input type="text" name="task.desc" [(ngModel)]="task.desc" ><br>
+      <input type="submit" value="Save Task" >
+     
+    </form>
+  
+  <hr>
+  </div>
+
+
+  <!-- <button (click)="onButtonClick()">Click me!</button>
+  <button (click)="onButtonClickParam(5)">Click me!</button>
+  <button (click)="onButtonClickParams(5, 'hello')">Click me!</button>
+  <button (click)="onButtonClickEvent($event)">Click me!</button> -->
+</body>
+</html>
+
+
+
+
+
+
